@@ -6,15 +6,15 @@
     box-sizing: border-box;
 }
 
-html{
+html {
     scroll-behavior: smooth;
 }
-  
+
 body {
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
 }
-  
+
 .header {
     background-color: #000000f8;
     padding: 25px;
@@ -22,7 +22,7 @@ body {
     justify-content: space-between;
     align-items: center;
 }
-  
+
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -33,17 +33,17 @@ body {
 .logo {
     margin-left: 0;
 }
-  
+
 .logo-img {
     margin-left: 5px;
     height: 70px;
     width: auto;
 }
-  
+
 .nav-links {
     display: flex;
 }
-  
+
 .nav-links a {
     color: rgb(171, 171, 171);
     text-decoration: none;
@@ -52,17 +52,19 @@ body {
     font-size: medium;
     transition: color 0.3s ease;
 }
+
 .nav-links a:hover {
     color: white;
 }
-  
+
 /* Menu Toggle Icon (Hamburguesa) */
 .menu-toggle {
-    display: none; /* Oculta el menú hamburguesa en resoluciones grandes */
+    display: none;
+    /* Oculta el menú hamburguesa en resoluciones grandes */
 }
 
 .ham {
-    width: 75px;
+    width: 60px;
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
     transition: transform 400ms;
@@ -87,27 +89,32 @@ body {
 .ham8 .top {
     stroke-dasharray: 40 160;
 }
+
 .ham8 .middle {
     stroke-dasharray: 40 142;
     transform-origin: 50%;
     transition: transform 400ms;
 }
+
 .ham8 .bottom {
     stroke-dasharray: 40 85;
     transform-origin: 50%;
     transition: transform 400ms, stroke-dashoffset 400ms;
 }
+
 .ham8.active .top {
     stroke-dashoffset: -64px;
 }
+
 .ham8.active .middle {
     transform: rotate(90deg);
 }
+
 .ham8.active .bottom {
     stroke-dashoffset: -64px;
 }
 
-.container{
+.container {
     width: 80%;
     margin: auto;
     text-align: center;
@@ -120,7 +127,7 @@ body {
 }
 
 .quienes-somos {
-    display: flex; 
+    display: flex;
     flex-direction: row;
     align-items: center;
     padding: 20px;
@@ -129,73 +136,159 @@ body {
     border-radius: 10px;
 }
 
+.container.quienes-somos {
+    background-image: url('./img/pointed.jpg');
+    /* Sustituye con la URL de la imagen de fondo */
+    background-size: 300px;
+    /* Aumenta el tamaño para que se vea más lejana */
+    background-repeat: repeat;
+    /* Evita que la imagen se repita */
+    background-position: center;
+    /* Centra la imagen */
+    position: relative;
+}
+
+.container.quienes-somos::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    /* Capa blanca translúcida */
+    border-radius: 10px;
+    z-index: 1;
+}
+
+.container.quienes-somos .avatar,
+.container.quienes-somos .contenido {
+    position: relative;
+    z-index: 2;
+    /* Para que el contenido esté por encima de la capa de fondo */
+}
+
 .avatar {
     flex: 1;
-    max-width: 150px; 
+    max-width: 150px;
     margin-right: 20px;
 }
 
 .avatar img {
-    width: 100%; 
+    width: 100%;
     text-align: center;
-    height: auto; 
-    border-radius: 80%; 
+    height: auto;
+    border-radius: 80%;
     transition: transform 0.5s ease-in-out;
 }
 
 .avatar img:hover {
-    transform: scale(1.2); /* Aumenta el tamaño de la imagen al 110% */
+    transform: scale(1.2);
+    /* Aumenta el tamaño de la imagen al 110% */
 }
 
 .contenido {
-    flex: 1; /* Toma más espacio que el avatar */
+    flex: 1;
+    /* Toma más espacio que el avatar */
 }
 
-h1{
+h1 {
     font-size: 38px;
     padding: 20px;
+    margin-top: 4%;
 }
 
 h2 {
     font-size: 25px;
-    margin: 0 0 10px; /* Espaciado para el título */
+    margin: 0 0 10px;
     padding: 5px;
     text-align: left;
 }
 
-h3{
+h3 {
     font-size: 22px;
 }
 
 p {
-    line-height: 1.6; /* Mejora la legibilidad del texto */
+    line-height: 1.6;
     text-align: left;
     font-size: 16px;
     margin-bottom: 20px;
 }
 
-.wrap{
-    display: flex;
+.hover-grow {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.hover-grow:hover {
+    transform: scale(1.4);
+}
+
+.wrap {
+    position: relative;
+    /* Necesario para que el pseudo-elemento se posicione correctamente */
+    display: none;
+    /* Oculta el div inicialmente */
+    background-image: url('./img/pointed.jpg');
+    /* Coloca aquí la URL de tu imagen */
+    background-size: 300px;
+    /* Aumenta el tamaño para que se vea más lejana */
+    background-repeat: repeat;
+    /* Repite la imagen en toda el área del div */
+    background-position: center;
+    /* Centra la imagen en el div */
+    background-color: rgba(255, 255, 255, 0.909);
+    /* Fondo blanco semitransparente */
+    z-index: 0;
+    /* Coloca el contenedor debajo del pseudo-elemento */
+
+    opacity: 0;
     margin: auto;
     justify-content: space-around;
-    border: 1px solid #ccc; /* Opcional, para visualizar el contenedor */
+    border: 1px solid #ccc;
+    /* Opcional, para visualizar el contenedor */
     border-radius: 10px;
+    transition: opacity 0.5s ease, visibility 0s 0.5s;
+    /* Suave transición de opacidad */
 }
-.wrap div{
+
+.wrap::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    z-index: 1;
+}
+
+.wrap>* {
+    position: relative;
+    z-index: 2;
+}
+
+.wrap div {
     margin: 10px;
 }
 
-.wrap img{
+.wrap img {
     width: 150px;
     padding: 5px;
     margin: 10px;
     border-radius: 20px;
-    transition: transform 0.3s ease; /* Añade una transición suave */
+    transition: transform 0.3s ease;
+    /* Añade una transición suave */
 }
+
 .wrap img:hover {
-    transform: scale(1.1); /* Aumenta el tamaño de la imagen al pasar el mouse */
+    transform: scale(1.1);
+    /* Aumenta el tamaño de la imagen al pasar el mouse */
 }
-.wrap p{
+
+.wrap p {
     font-size: medium;
     padding: 10px;
     margin: 5px;
@@ -203,21 +296,16 @@ p {
 }
 
 .suitcase {
-    margin: 20px;
-    padding: 25px;
+    margin: 30px;
 }
 
-.pt iframe{
-    border: none; /* Eliminar el borde predeterminado */
-    width: 100%; /* Hacer que ocupe todo el ancho del contenedor */
-    height: 350px; /* Ajustar la altura según tus necesidades */
-    border-radius: 10px; /* Bordes redondeados */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave para dar profundidad */
-    overflow: hidden; /* Ocultar el desbordamiento, si es necesario */
-
+.animate__animated {
+    margin-top: 50px;
+    font-size: 35px;
+    text-align: left;
 }
 
-footer{
+footer {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -226,18 +314,21 @@ footer{
     background-color: #000000f8;
 }
 
-.social-media a img{
+.social-media a img {
     width: 25px;
     margin: 10px;
-    filter: invert(1); /* Invierte los colores, cambia el negro a blanco */
-    transition: transform 0.3s ease; /* Agrega una transición suave */
+    filter: invert(1);
+    /* Invierte los colores, cambia el negro a blanco */
+    transition: transform 0.3s ease;
+    /* Agrega una transición suave */
 }
 
 .social-media a:hover img {
-    transform: scale(1.2); /* Aumenta el tamaño en un 10% al hacer hover */
+    transform: scale(1.2);
+    /* Aumenta el tamaño en un 10% al hacer hover */
 }
 
-.signature p{
+.signature p {
     padding: 10px;
     color: #ffffffd7;
     font-size: small;
@@ -245,12 +336,14 @@ footer{
 
 .iframe-container {
     display: flex;
-    flex-direction: column; /* Una columna por defecto */
+    flex-direction: column;
+    /* Una columna por defecto */
 }
 
-.iframe-container > div {
-    width: 100%; /* Cada div ocupa el 100% del ancho en pantallas pequeñas */
-    margin-bottom: 20px; /* Espaciado inferior */
+.iframe-container>div {
+    width: 100%;
+    /* Cada div ocupa el 100% del ancho en pantallas pequeñas */
+    margin-bottom: 20px;
 }
 
 /* Responsive styles */
@@ -260,7 +353,7 @@ footer{
         left: -100%;
         top: 120px;
         padding: 10px;
-        height: 140px;
+        height: 200px;
         width: 100%;
         background-color: #000000;
         flex-direction: column;
@@ -270,28 +363,34 @@ footer{
         transition: left 0.4s ease;
         display: none;
     }
-  
+
     .nav-links.show {
         left: 0;
         display: flex;
     }
-  
+
     .menu-toggle {
-        display: flex; /* Muestra el menú hamburguesa en pantallas pequeñas */
+        display: flex;
+        /* Muestra el menú hamburguesa en pantallas pequeñas */
     }
 
     .quienes-somos {
-        flex-direction: column; /* Cambia la dirección del flex a columna */
-        align-items: center; /* Centra los elementos */
+        flex-direction: column;
+        /* Cambia la dirección del flex a columna */
+        align-items: center;
+        /* Centra los elementos */
     }
 
-    .quienes-somos h2, .quienes-somos p{
+    .quienes-somos h2,
+    .quienes-somos p {
         text-align: center;
     }
 
     .avatar {
-        margin-right: 0; /* Elimina el margen a la derecha en móvil */
-        margin-bottom: 20px; /* Añade un margen inferior para espacio entre elementos */
+        margin-right: 0;
+        /* Elimina el margen a la derecha en móvil */
+        margin-bottom: 20px;
+        /* Añade un margen inferior para espacio entre elementos */
     }
 
     .wrap {
@@ -300,33 +399,41 @@ footer{
     }
 
     .wrap img {
-        width: 180px; /* Aumenta el tamaño en pantallas pequeñas */
+        width: 150px;
+        /* Aumenta el tamaño en pantallas pequeñas */
         height: auto;
         margin-bottom: 20px;
-        transition: transform 0.3s ease; /* Añade una transición suave */
+        transition: transform 0.3s ease;
+        /* Añade una transición suave */
     }
-    
+
     .wrap img:hover {
-        transform: scale(1.1); /* Aumenta el tamaño de la imagen al pasar el mouse */
+        transform: scale(1.1);
+        /* Aumenta el tamaño de la imagen al pasar el mouse */
     }
 
     .banner {
-        transition: opacity 0.4s ease; /* Añadir una transición para la opacidad */
-        opacity: 1; /* Opacidad inicial */
+        transition: opacity 0.4s ease;
+        /* Añadir una transición para la opacidad */
+        opacity: 1;
+        /* Opacidad inicial */
     }
 
     .banner.hide {
-        opacity: 0; /* Opacidad al ocultar */
-        pointer-events: none; /* Prevenir interacciones mientras está oculto */
+        opacity: 0;
+        /* Opacidad al ocultar */
+        pointer-events: none;
+        /* Prevenir interacciones mientras está oculto */
     }
 }
 
 @media (min-width: 769px) {
     .menu-toggle {
-        display: none; /* Oculta el menú hamburguesa en pantallas grandes */
+        display: none;
+        /* Oculta el menú hamburguesa en pantallas grandes */
     }
 
-    .nav-links{
+    .nav-links {
         font-family: sans-serif;
         font-size: small;
         color: #ffffff;
@@ -338,16 +445,20 @@ footer{
 
     .wrap img {
         overflow: hidden;
-        width: 150px; /* Ancho fijo en pantallas grandes */
-        margin: 10px; /* Margen de 10px */
-        padding: 5px; /* Padding de 5px */
-        transition: transform 0.3s ease; /* Transición para el efecto de transformación */
+        width: 150px;
+        /* Ancho fijo en pantallas grandes */
+        margin: 10px;
+        /* Margen de 10px */
+        padding: 5px;
+        /* Padding de 5px */
+        transition: transform 0.3s ease;
+        /* Transición para el efecto de transformación */
     }
 }
 
 @media (min-width: 1024px) {
     .wrap img {
-        width: 250px; /* Aumenta el tamaño de las imágenes en pantallas grandes */
+        width: 200px;
+        /* Aumenta el tamaño de las imágenes en pantallas grandes */
     }
 }
-
