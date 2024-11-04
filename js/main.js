@@ -9,8 +9,10 @@ document.querySelector('.menu-toggle').addEventListener('click', function () {
     // Aplicar clase 'hide' al banner basado en el estado del menú
     if (menuIsActive) {
         banner.classList.add('hide'); // Oculta el banner cuando el menú está activo
-    } else {
+        document.body.classList.remove('menu-open');
+    } else {        
         banner.classList.remove('hide'); // Muestra el banner cuando el menú está inactivo
+        document.body.classList.add('menu-open');
     }
 });
 
